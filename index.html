@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Gambar</title>
+</head>
+<body>
+    <h2>Unggah Gambar</h2>
+    <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" id="gambarInput" name="gambar" accept="image/*" required>
+        <br>
+        <button type="submit">Unggah</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('uploadForm');
+        const gambarInput = document.getElementById('gambarInput');
+
+        form.addEventListener('submit', function(event) {
+            const file = gambarInput.files[0];
+            const fileSize = file.size; // in bytes
+            const fileType = file.type; // MIME type
+
+            // Validasi ukuran gambar (maksimal 5MB)
+            if (fileSize > 5 * 1024 * 1024) {
+                alert('Ukuran gambar terlalu besar. Maksimal 5MB.');
+                event.preventDefault();
+                return;
+            }
+
+            // Validasi tipe gambar (hanya PNG, JPG, JPEG)
+            if (!['image/png', 'image/jpeg', 'image/jpg'].includes(fileType)) {
+                alert('Tipe gambar tidak valid. Hanya PNG, JPG, dan JPEG diperbolehkan.');
+                event.preventDefault();
+                return;
+            }
+        });
+    </script>
+</body>
+</html>
