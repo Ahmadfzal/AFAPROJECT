@@ -118,7 +118,7 @@ button i {
     transition: .5s ease-in-out;
     right: -500px;
     top: 20%;
-    transform: translateZ(80%);
+    transform: translateZ(-80%);
 }
 
 
