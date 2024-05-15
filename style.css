@@ -1,20 +1,247 @@
-<?php
-// Cek apakah ada file yang diunggah
-if ($_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
-    // Tentukan direktori penyimpanan gambar
-    $uploadDir = 'uploads/';
-
-    // Ambil informasi file yang diunggah
-    $fileName = $_FILES['gambar']['name'];
-    $fileTmpName = $_FILES['gambar']['tmp_name'];
-
-    // Pindahkan file yang diunggah ke direktori penyimpanan
-    if (move_uploaded_file($fileTmpName, $uploadDir . $fileName)) {
-        echo 'Gambar berhasil diunggah.';
-    } else {
-        echo 'Terjadi kesalahan saat mengunggah gambar.';
-    }
-} else {
-    echo 'Terjadi kesalahan saat mengunggah gambar.';
+body {
+    background: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
 }
-?>
+
+
+.open-btn {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(,34,255,255,0.6);
+    
+}
+button i {
+    color: #555;
+    font-size: 20px;
+}
+.close-btn {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    width: 40px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255,255 ,255 ,0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(,0,0,0,0.5);
+    border: none;
+    outline: none;
+    z-index: 3;
+}
+
+
+
+.box-container {
+    position: relative;
+    display: flex;
+    height: 105vh;
+    width: 390px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 0.5s ease-in-out;
+}
+
+
+.button .btn1 {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    width: 80px;
+    height: 30px;
+    font-weight: 500;
+    background: rgba(255,255 ,255 ,0.4);
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba(,0,0,0,0.5);
+    border: none;
+    outline: none;
+    z-index: 2;
+}
+.btn1:hover {
+    background: rgba(255,255 ,255 ,0.8);
+}
+.button .btn2 {
+    position: absolute;
+    top: 5px;
+    left: 100px;
+    width: 80px;
+    height: 30px;
+    font-weight: 500;
+    background: rgba(255,255 ,255 ,0.4);
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba(,0,0,0,0.5);
+    border: none;
+    outline: none;
+    z-index: 2;
+}
+.btn2:hover {
+    background: rgba(255,255 ,255 ,0.8);
+}
+
+
+
+.login-container {
+    position: absolute;
+    background: rgba(255,255,255,0.7);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(,0,0,0,0.5);
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+    transform: translateZ(-70%);
+}
+.register-container {
+    position: absolute;
+    background: rgba(,255,255,255,0.7);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(,0,0,0,0.7);
+    border-radius: 20px;
+    transition: .5s ease-in-out;
+    right: -500px;
+    top: 20%;
+    transform: translateZ(80%);
+}
+
+
+.box-container h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.login-group input[type="text"],
+.login-group input[type="password"] {
+    position: relative;
+    width: 60%;
+    padding: 10px 35px;
+    margin-bottom: 25px;
+    border: 1px solid white;
+    border-radius: 50px;
+    outline: none;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.login-group i[class="fas fa-user icon1"] {
+    position: absolute;
+    top: 30%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+}
+.login-group i[class="fas fa-lock icon1"] {
+    position: absolute;
+    top: 54%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+    
+}
+
+
+.login-group input[type="submit"] {
+    position: relative;
+    background-color: #007bff;
+    width: 50%;
+    left: 25%;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;    
+}
+.login-group input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+.register-group input[type="username"],
+.register-group input[type="text"],
+.register-group input[type="email"],
+.register-group input[type="Tel"],
+.register-group input[type="password"] {
+    position: relative;
+    width: 60%;
+    padding: 10px 35px;
+    margin-bottom: 25px;
+    border: 1px solid white;
+    border-radius: 50px;
+    outline: none;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.register-group i[class="fas fa-user icon2"] {
+    position: absolute;
+    top: 17.5%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+}
+.register-group i[class="fas fa-user icon3"] {
+    position: absolute;
+    top: 31.5%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+}
+.register-group i[class="fas fa-envelope icon1"] {
+    position: absolute;
+    top: 45.5%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+}
+.register-group i[class="fas fa-phone icon1"] {
+    position: absolute;
+    top: 59.5%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+}
+.register-group i[class="fas fa-lock icon2"] {
+    position: absolute;
+    top: 73.5%;
+    left: 38px;
+    color: #555;
+    z-index: 1;
+}
+
+
+.register-group input[type="submit"] {
+    position: relative;
+    background-color: #007bff;
+    width: 50%;
+    left: 25%;
+    padding: 10px;
+    margin-bottom: 30px;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.register-group input[type="submit"]:hover {
+    background-color: #0056b3;
+}
