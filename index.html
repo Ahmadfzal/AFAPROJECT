@@ -3,39 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Gambar</title>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h2>Unggah Gambar</h2>
-    <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" id="gambarInput" name="gambar" accept="image/*" required>
-        <br>
-        <button type="submit">Unggah</button>
-    </form>
+     <button class="open-btn" id="openBtn">
+         <i class="fas fa-sign-in-alt"></i>
+     </button>
+     <button class="close-btn" id="closeBtn">C</button>    
+<!-- class login -->
+<div class="box-container" id="Box">
+    <div class="button">
+        <button class="btn1" id="loginBtn" onclick="login()">Sign In</button>
+        <button class="btn2" id="registerBtn" onclick="register()">Sign Up</button>
+    </div>
+    <div class="login-container" id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="login-group">
+                <label for="username"></label>
+                <i class="fas fa-user icon1"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="login-group">
+                <label for="password"></label>
+                <i class="fas fa-lock icon1"></i>
+                <input type="password" id="password"  placeholder="Password" required>
+            </div>
+            <div class="login-group">
+                <input type="submit" value="Login">
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+        </form>
+    </div>
+    
+<!-- class sign up -->
 
-    <script>
-        const form = document.getElementById('uploadForm');
-        const gambarInput = document.getElementById('gambarInput');
-
-        form.addEventListener('submit', function(event) {
-            const file = gambarInput.files[0];
-            const fileSize = file.size; // in bytes
-            const fileType = file.type; // MIME type
-
-            // Validasi ukuran gambar (maksimal 5MB)
-            if (fileSize > 5 * 1024 * 1024) {
-                alert('Ukuran gambar terlalu besar. Maksimal 5MB.');
-                event.preventDefault();
-                return;
-            }
-
-            // Validasi tipe gambar (hanya PNG, JPG, JPEG)
-            if (!['image/png', 'image/jpeg', 'image/jpg'].includes(fileType)) {
-                alert('Tipe gambar tidak valid. Hanya PNG, JPG, dan JPEG diperbolehkan.');
-                event.preventDefault();
-                return;
-            }
-        });
-    </script>
+    <div class="register-container" id="register">
+        <h2>Register</h2>
+        <form class="registerForm">
+            <div class="register-group">
+                <label for="name"></label>
+                <i class="fas fa-user icon2"></i>
+                <input type="text" id="name" placeholder="Contoh: Nama Anda">
+            </div>
+            <div class="register-group">
+                <label for="username1"></label>
+                <i class="fas fa-user icon3"></i>
+                <input type="username" id="username1" pattern="[a-z]" placeholder="Contoh: namaanda">
+            </div>
+            <div class="register-group">
+                <label for="gmail"></label>
+                <i class="fas fa-envelope icon1"></i>
+                <input type="email" id="gmail" placeholder="Contoh: namaanda@gmai.com">
+            </div>
+            <div class="register-group">
+                <label for="Telpon"></label>
+                <i class="fas fa-phone icon1"></i>
+                <input type="Tel" id="telpon" placeholder="Contoh: 0812-3456-7890">
+            </div>
+            <div class="register-group">
+                <label for="password1"></label>
+                <i class="fas fa-lock icon2"></i>
+                <input type="password" id="password1" placeholder="Masukan Password">
+            </div>
+            <div class="register-group">
+                <input type="submit" value="Register">
+            </div>  
+        </form>   
+    </div>
+</div>
+    <script src="javascript.js"></script>
+    <script src="animation.js"></script>
 </body>
 </html>
